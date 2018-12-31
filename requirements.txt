@@ -2,5 +2,6 @@ attrs==18.2.0
 flake8==3.6.0
 freezegun==0.3.11
 inject==3.4.0
+mypy==0.650
 pylint==2.2.2
 pytest==4.0.2
