@@ -4,6 +4,8 @@ import uuid
 
 import attr
 
+from tracki.src.domain import exceptions
+
 
 @attr.s
 class Shift:
@@ -13,9 +15,15 @@ class Shift:
     id: uuid.UUID = attr.ib(factory=lambda: uuid.uuid4)
 
     def start(self) -> None:
+        if self.start_time:
+            raise exceptions.ShiftAlreadyStartedException
         self.start_time = datetime.datetime.now()
 
     def end(self) -> None:
+        if not self.start_time:
+            raise exceptions.ShiftNotYetStartedException
+        if self.end_time:
+            raise exceptions.ShiftAlreadyEndedException
         self.end_time = datetime.datetime.now()
 
     @property
