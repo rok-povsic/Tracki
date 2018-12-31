@@ -23,13 +23,15 @@ def di_config(shift_repo_mock: mock.Mock) -> None:
 
 
 def test_should_save_shift_start(shift_repo_mock: mock.Mock) -> None:
-    input_dto = use_cases.StartingShiftUseCase.InputDTO(category_id='category1')
+    input_dto = use_cases.StartingShiftUseCase.InputDTO(
+        category=entities.Category(name='category1')
+    )
 
     with freezegun.freeze_time('2010-01-01'):
         use_cases.StartingShiftUseCase().execute(input_dto)
 
     shift_repo_mock.save.assert_called_once_with(
         entities.Shift(
-            category_id='category1', start_time=datetime.datetime(2010, 1, 1), id=mock.ANY
+            category=entities.Category('category1'), start_time=datetime.datetime(2010, 1, 1)
         )
     )

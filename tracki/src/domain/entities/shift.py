@@ -1,18 +1,17 @@
 import datetime
 import typing
-import uuid
 
 import attr
 
 from tracki.src.domain import exceptions
+from tracki.src.domain.entities import category as category_entity
 
 
 @attr.s
 class Shift:
-    category_id: str = attr.ib()
+    category: category_entity.Category = attr.ib()
     start_time: typing.Optional[datetime.datetime] = attr.ib(default=None)
     end_time: typing.Optional[datetime.datetime] = attr.ib(default=None)
-    id: uuid.UUID = attr.ib(factory=uuid.uuid4)
 
     def start(self) -> None:
         if self.start_time:

@@ -11,7 +11,7 @@ from tracki.src.domain import (
 
 @pytest.fixture()
 def shift() -> entities.Shift:
-    return entities.Shift('A')
+    return entities.Shift(category=entities.Category(name='A'))
 
 
 def test_shift_not_running_before_starting(shift: entities.Shift) -> None:
