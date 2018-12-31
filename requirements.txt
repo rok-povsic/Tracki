@@ -1,3 +1,4 @@
 attrs==18.2.0
-pytest==4.0.2
 freezegun==0.3.11
+inject==3.4.0
+pytest==4.0.2
