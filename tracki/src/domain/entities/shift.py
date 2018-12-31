@@ -12,7 +12,7 @@ class Shift:
     category_id: str = attr.ib()
     start_time: typing.Optional[datetime.datetime] = attr.ib(default=None)
     end_time: typing.Optional[datetime.datetime] = attr.ib(default=None)
-    id: uuid.UUID = attr.ib(factory=lambda: uuid.uuid4)
+    id: uuid.UUID = attr.ib(factory=uuid.uuid4)
 
     def start(self) -> None:
         if self.start_time:
