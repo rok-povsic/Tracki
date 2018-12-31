@@ -1,12 +1,12 @@
 import datetime
-import typing
+import os
 
 from tracki.src.domain import entities
 from tracki.src.infrastructure import repositories
 
 
-def test_completed_shift_should_be_saved(tmp_path: typing.Any) -> None:
-    file_path = tmp_path / 'aa.txt'
+def test_completed_shift_should_be_saved(tmp_path: str) -> None:
+    file_path = os.path.join(tmp_path, 'aa.txt')
     shift_repo = repositories.FileShiftRepository(file_path)
 
     shift_repo.save(
@@ -17,6 +17,6 @@ def test_completed_shift_should_be_saved(tmp_path: typing.Any) -> None:
         )
     )
 
-    with open(file_path) as f:
-        file_text = f.read()
+    with open(file_path) as data_file:
+        file_text = data_file.read()
     assert file_text == 'AA,2010-01-01 00:00:00,2010-01-01 00:05:00\n'
