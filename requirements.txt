@@ -1,4 +1,5 @@
 attrs==18.2.0
+flake8==3.6.0
 freezegun==0.3.11
 inject==3.4.0
 pylint==2.2.2
