@@ -1,0 +1,2 @@
+class ShiftNotRunningException(Exception):
+    pass

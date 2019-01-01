@@ -1,0 +1,2 @@
+class NoShiftsPresentException(Exception):
+    pass

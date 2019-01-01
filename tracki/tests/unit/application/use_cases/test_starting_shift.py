@@ -2,24 +2,9 @@ import datetime
 from unittest import mock
 
 import freezegun
-import inject
-import pytest
 
-from tracki.src.application import use_cases, repositories
+from tracki.src.application import use_cases
 from tracki.src.domain import entities
-
-
-@pytest.fixture()
-def shift_repo_mock() -> mock.Mock:
-    return mock.Mock(spec_set=repositories.ShiftRepository)
-
-
-@pytest.fixture(autouse=True)
-def di_config(shift_repo_mock: mock.Mock) -> None:
-    def di_configuration(binder: inject.Binder) -> None:
-        binder.bind(repositories.ShiftRepository, shift_repo_mock)
-
-    inject.clear_and_configure(di_configuration)
 
 
 def test_should_save_shift_start(shift_repo_mock: mock.Mock) -> None:
